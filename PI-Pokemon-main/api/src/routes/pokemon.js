@@ -9,7 +9,7 @@ const { Op } = require('sequelize');
 router.get('/', async (req, res, next) => {
 
 let name = req.query.name;
-
+name = name.toLowerCase();
   if(name){
 
     //OBTENER POKEMON DE API POR QUERY
@@ -68,9 +68,7 @@ let name = req.query.name;
   })
 res.send(normalizePokemonDb)
 
-} catch (error) {
-  next(error)
-}
+} catch {};
 
 
 
