@@ -9,8 +9,8 @@ const { Op } = require('sequelize');
 router.get('/', async (req, res, next) => {
 
 let name = req.query.name;
-name = name.toLowerCase();
   if(name){
+    name = name.toLowerCase();
 
     //OBTENER POKEMON DE API POR QUERY
     try{
@@ -64,7 +64,7 @@ name = name.toLowerCase();
     height: nameQuery[0]?.dataValues.height,
     weight: nameQuery[0]?.dataValues.weight,
     image: nameQuery[0]?.dataValues.image,
-    tipo: nameQuery[0]?.dataValues.tipos
+    tipo: nameQuery[0]?.dataValues.tipos.map(n => {return {name: n.name}})
   })
 res.send(normalizePokemonDb)
 
@@ -99,12 +99,12 @@ res.send(normalizePokemonDb)
           height: include[i].dataValues.height,
           weight: include[i].dataValues.weight,
           image: include[i].dataValues.image,
-          tipo: include[i].dataValues.tipos.map(n => n.name)
+          tipo: include[i].dataValues.tipos.map(n => {return {name: n.name}})
         })
       }
 
       //OBTENER TODOS LOS POKEMONES DE LA API
-      let apiLink = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=40');
+      let apiLink = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=150');
       apiLink = apiLink.data.results;
       let subrequest = apiLink.map(el => axios.get(el.url))
       let promesaCumplida = await Promise.all(subrequest)
