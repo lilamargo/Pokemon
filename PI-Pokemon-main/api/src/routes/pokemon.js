@@ -64,7 +64,8 @@ let name = req.query.name;
     height: nameQuery[0]?.dataValues.height,
     weight: nameQuery[0]?.dataValues.weight,
     image: nameQuery[0]?.dataValues.image,
-    tipo: nameQuery[0]?.dataValues.tipos.map(n => {return {name: n.name}})
+    tipo: nameQuery[0]?.dataValues.tipos.map(n => {return {name: n.name}}),
+    createInDb: nameQuery[0]?.dataValues.createInDb
   })
 res.send(normalizePokemonDb)
 
@@ -99,12 +100,13 @@ res.send(normalizePokemonDb)
           height: include[i].dataValues.height,
           weight: include[i].dataValues.weight,
           image: include[i].dataValues.image,
-          tipo: include[i].dataValues.tipos.map(n => {return {name: n.name}})
+          tipo: include[i].dataValues.tipos.map(n => {return {name: n.name}}),
+          createInDb: include[i].dataValues.createInDb
         })
       }
 
       //OBTENER TODOS LOS POKEMONES DE LA API
-      let apiLink = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=150');
+      let apiLink = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=40');
       apiLink = apiLink.data.results;
       let subrequest = apiLink.map(el => axios.get(el.url))
       let promesaCumplida = await Promise.all(subrequest)
@@ -124,8 +126,8 @@ res.send(normalizePokemonDb)
         }
       })
 
-      let allPokemons = [...normalize, ...promesaCumplida]
-      res.send(allPokemons);
+      let allPokemones = [...normalize, ...promesaCumplida]
+      res.send(allPokemones);
 
     } catch(error) {
       next(error)
