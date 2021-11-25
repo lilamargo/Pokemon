@@ -1,16 +1,28 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPokemons } from '../actions/index.js';
+import { getPokemons, filterCreated, orderAlfabetico } from '../actions/index.js';
 import { Link } from 'react-router-dom';
-import  Card from './Card'
+import  Card from './Card';
+import Paginado from './Paginado';
 
 
 export default function Home (){
 
-  const dispatch = useDispatch() //Para utilizar esa constante e ir despachando esas acciones.
-  const allPokemons = useSelector((state) => state.pokemones)
-  console.log(allPokemons)
+const dispatch = useDispatch() //Para utilizar esa constante e ir despachando esas acciones.
+const allPokemones = useSelector((state) => state.pokemones)
+
+const [orden, setOrden] = useState('')
+const [currentPage, setCurrentPage] = useState(1)
+const [pokemonesPerPage, setPokemonesPerPage] = useState(12)
+const indexOfLastPokemon = currentPage * pokemonesPerPage
+const indexOfFirstPokemon = indexOfLastPokemon - pokemonesPerPage
+const currentPokemones = allPokemones.slice(indexOfFirstPokemon, indexOfLastPokemon)
+
+const paginado = (pageNumber) => {
+  setCurrentPage(pageNumber)
+}
+
   useEffect(() => {
     dispatch(getPokemons())
   }, [dispatch]);
@@ -18,6 +30,18 @@ export default function Home (){
   function handleClick(e){
 e.preventDefault();
 dispatch(getPokemons());
+}
+
+  function handleFilterCreated(e){
+    e.preventDefault();
+    dispatch(filterCreated(e.target.value))
+  }
+
+  function handleOrderAlfabetico(e){
+    e.preventDefault();
+    dispatch(orderAlfabetico(e.target.value))
+    setCurrentPage(1);
+    setOrden(`Ordenado ${e.target.value}`)
   }
 
   return (
@@ -30,16 +54,22 @@ dispatch(getPokemons());
        <div>
 
       <label>Orden Alfabético</label>
-          <select>
+          <select onChange={e => handleOrderAlfabetico(e)}>
             <option value= 'asc'> Ascendente </option>
             <option value= 'desc'> Descendente </option>
           </select>
 
+      <label>Orden por Puntos de Fuerza</label>
+      <select>
+      <option value= 'asc'> Ascendente </option>
+      <option value= 'desc'> Descendente </option>
+      </select>
 
       <label>Existentes y Creados</label>
-          <select>
-            <option> Existentes </option>
-            <option> Creados </option>
+          <select onChange={e => handleFilterCreated(e)}>
+            <option value='All'> Todos </option>
+            <option value='api'> Existentes </option>
+            <option value='created'> Creados </option>
           </select>
 
 
@@ -49,13 +79,17 @@ dispatch(getPokemons());
           </select>
 
 
-      <label>Orden por Puntos de Fuerza</label>
-          <select>
-          <option value= 'asc'> Ascendente </option>
-          <option value= 'desc'> Descendente </option>
-          </select>
+
+
+          <Paginado
+          pokemonesPerPage = {pokemonesPerPage}
+          allPokemones = {allPokemones.length}
+          paginado = {paginado}
+          />
+
+
           {
-            allPokemons?.map(el => {
+            currentPokemones?.map(el => {
               return (
                 <>
                 <Link to={'/home/' + el.id}>

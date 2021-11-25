@@ -10,3 +10,17 @@ export function getPokemons(){
     })
   }
 }
+
+export function filterCreated(payload) {
+  return {
+    type: 'FILTER_CREATED',
+    payload
+  }
+}
+
+export function orderAlfabetico(payload){
+  return {
+    type: 'ORDER_ALFABETICO',
+    payload
+  }
+}
