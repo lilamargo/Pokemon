@@ -1,7 +1,8 @@
 
 const initialState = {
   pokemones : [],
-  allPokemones: []
+  allPokemones: [],
+  arrayTipos: []
 }
 
 function rootReducer (state = initialState, action) {
@@ -12,6 +13,26 @@ function rootReducer (state = initialState, action) {
       pokemones: action.payload,
       allPokemones: action.payload
     }
+
+    case 'GET_NAME_POKEMONES':
+      return {
+        ...state,
+        pokemones: action.payload
+      }
+
+    case 'POST_POKEMON':
+    return {
+      ...state,
+    }
+
+    case 'GET_TIPOS':
+      return {
+        ...state,
+        arrayTipos: action.payload
+      }
+
+
+
     case 'FILTER_CREATED':
     const createdFilter = action.payload === 'created' ? state.allPokemones.filter(el => el.createInDb)
     : state.allPokemones.filter(el => !el.createInDb)

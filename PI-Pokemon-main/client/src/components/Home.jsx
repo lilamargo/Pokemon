@@ -5,6 +5,7 @@ import { getPokemons, filterCreated, orderAlfabetico } from '../actions/index.js
 import { Link } from 'react-router-dom';
 import  Card from './Card';
 import Paginado from './Paginado';
+import SearchBar from './SearchBar'
 
 
 export default function Home (){
@@ -48,6 +49,10 @@ dispatch(getPokemons());
     <div>
       <Link to='/pokemon'> Crear Personaje </Link>
        <h1> POKEMON </h1>
+
+       <SearchBar/>
+
+
        <button onClick = {(e) => {handleClick(e)}}>
           Volver a cargar a todos los personajes
        </button>
@@ -93,7 +98,7 @@ dispatch(getPokemons());
               return (
                 <>
                 <Link to={'/home/' + el.id}>
-                  <Card name={el.name} image={el.image} tipo={el.tipo.map(n => n.name + ' ')} />
+                  <Card name={el.name} image={el.image ? el.image : <img src='https://forums.pokemmo.eu/uploads/monthly_2020_10/1392966187789.gif.8f8685345a400e0e5d6ca3c2a1aba734.gif'/>} tipo={el.tipo.map(n => n.name + ' ')} />
                 </Link>
                 </>
               )
