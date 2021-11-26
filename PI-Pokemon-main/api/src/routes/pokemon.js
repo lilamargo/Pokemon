@@ -86,6 +86,7 @@ res.send(normalizePokemonDb)
           }
         }
       });
+      
 
       //NORMALIZAR TODOS LOS POKEMONES PARA QUE SOLO TRAIGA LOS DATA QUE QUEREMOS DE CADA POKEMON
       let normalize = []
