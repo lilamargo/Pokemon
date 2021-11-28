@@ -1,22 +1,21 @@
-import React from 'react';
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React from "react";
 
-export default function Paginado ({pokemonesPerPage, allPokemones, paginado}) {
+export default function Paginado({ pokemonesPerPage, allPokemones, paginado }) {
   const pageNumbers = [];
-  for(let i = 1; i <= Math.ceil(allPokemones/pokemonesPerPage); i++){
+  for (let i = 1; i <= Math.ceil(allPokemones / pokemonesPerPage); i++) {
     pageNumbers.push(i);
   }
   return (
     <nav>
-      <ul className='paginado'>
-        {
-          pageNumbers &&
-          pageNumbers.map(number => (
-            <li className='number' key={number}>
-            <a onClick ={() => paginado(number)}>{number}</a>
+      <ul className="paginado">
+        {pageNumbers &&
+          pageNumbers.map((number) => (
+            <li className="number" key={number}>
+              <a onClick={() => paginado(number)}>{number}</a>
             </li>
-          ))
-        }
+          ))}
       </ul>
     </nav>
-  )
+  );
 }
