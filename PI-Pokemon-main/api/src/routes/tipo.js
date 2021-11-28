@@ -1,27 +1,25 @@
-const { Router } = require('express');
+const { Router } = require("express");
 const router = Router();
-const axios = require ('axios');
-const { Tipo } = require('../db.js')
+const axios = require("axios");
+const { Tipo } = require("../db.js");
 
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
-    const allTipos = await axios.get('https://pokeapi.co/api/v2/type')
+    let allTipos = await axios.get("https://pokeapi.co/api/v2/type");
+    let todosTipos = allTipos.data.results;
 
-    allTipos.data.results.forEach((item)  => {
+    todosTipos.forEach((item) => {
       Tipo.findOrCreate({
         where: {
-          name: item.name
-        }
-      })
-    })
+          name: item.name.toUpperCase(),
+        },
+      });
+    });
     const tiposDb = await Tipo.findAll();
     res.send(tiposDb);
   } catch (error) {
     next(error);
   }
-
 });
-
-
 
 module.exports = router;
