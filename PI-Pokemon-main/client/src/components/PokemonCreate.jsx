@@ -47,19 +47,23 @@ export default function PokemonCreate() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    dispatch(postPokemon(input));
-    alert("Pokemon Creado!!");
-    setInput({
-      name: "",
-      hp: "",
-      attack: "",
-      defense: "",
-      speed: "",
-      height: "",
-      weight: "",
-      image: "",
-      tipo: [],
-    });
+    if (input.tipo.length > 2) {
+      alert("Please, select maxim 2 types");
+    } else {
+      dispatch(postPokemon(input));
+      alert("Pokemon Creado!!");
+      setInput({
+        name: "",
+        hp: "",
+        attack: "",
+        defense: "",
+        speed: "",
+        height: "",
+        weight: "",
+        image: "",
+        tipo: [],
+      });
+    }
   }
 
   useEffect(() => {
@@ -70,23 +74,23 @@ export default function PokemonCreate() {
     <div>
       <Link to="/home">
         {" "}
-        <button>Home</button>{" "}
+        <button>RETURN HOME</button>{" "}
       </Link>
 
-      <h1>Crea tu Pokemon!</h1>
+      <h1>CUSTOM A NEW POKEMON!</h1>
 
       <form onSubmit={(e) => handleSubmit(e)}>
         <div>
-          <label>NOMBRE:</label>
+          <label>Name:</label>
           <input
             type="text"
             pattern="[a-zA-Z ]{2,254}"
             value={input.name}
             name="name"
             onChange={(e) => handleChange(e)}
-            placeholder="Nombre..."
+            placeholder="enter a original name"
             required
-            title="Solo texto sin números"
+            title="Please, enter only text without numbers"
           />
         </div>
         <div>
@@ -96,70 +100,70 @@ export default function PokemonCreate() {
             value={input.hp}
             name="hp"
             onChange={(e) => handleChange(e)}
-            placeholder="Hit Points..."
+            placeholder="enter hit points"
             required
           />
         </div>
         <div>
-          <label>FUERZA:</label>
+          <label>Attack:</label>
           <input
             type="number"
             value={input.attack}
             name="attack"
             onChange={(e) => handleChange(e)}
-            placeholder="Fuerza..."
+            placeholder="enter attack points"
             required
           />
         </div>
         <div>
-          <label>DEFENSA:</label>
+          <label>Defense:</label>
           <input
             type="number"
             value={input.defense}
             name="defense"
             onChange={(e) => handleChange(e)}
-            placeholder="Defensa..."
+            placeholder="enter defense points"
             required
           />
         </div>
         <div>
-          <label>VELOCIDAD:</label>
+          <label>Speed:</label>
           <input
             type="number"
             value={input.speed}
             name="speed"
             onChange={(e) => handleChange(e)}
-            placeholder="Velocidad..."
+            placeholder="enter speed points"
             required
           />
         </div>
         <div>
-          <label>ALTURA:</label>
+          <label>Height:</label>
           <input
             type="number"
             step="any"
             value={input.height}
             name="height"
             onChange={(e) => handleChange(e)}
-            placeholder="Altura..."
+            placeholder="enter height"
           />
         </div>
         <div>
-          <label>PESO:</label>
+          <label>Weight:</label>
           <input
             type="number"
             step="any"
             value={input.weight}
             name="weight"
             onChange={(e) => handleChange(e)}
-            placeholder="Peso..."
+            placeholder="enter weight"
             required
           />
         </div>
-        <label>TIPO:</label>
+        <label>Type:</label>
         <select onChange={(e) => handleSelect(e)}>
           <option value="none" defaultValue title="">
-            Selecciona Tipo
+            Select Type(s)
           </option>
           {estadoTipos?.map((t) => (
             <option value={t.name}>{t.name}</option>
@@ -172,7 +176,7 @@ export default function PokemonCreate() {
           </div>
         ))}
 
-        <button type="submit">Crear Pokemon</button>
+        <button type="submit">SAVE</button>
       </form>
     </div>
   );

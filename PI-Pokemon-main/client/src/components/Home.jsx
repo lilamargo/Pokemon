@@ -2,18 +2,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  getPokemons,
-  filterCreated,
-  orderAlfabetico,
-  getTipos,
-  filterTipos,
-  orderFuerza,
-} from "../actions/index.js";
+import { getPokemons } from "../actions/index.js";
 import { Link } from "react-router-dom";
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
 import Cards from "./Cards";
+import Filters from "./Filters";
+import estilohome from "./Home.module.css";
 
 export default function Home() {
   const dispatch = useDispatch(); //Para utilizar esa constante e ir despachando esas acciones.
@@ -34,51 +29,24 @@ export default function Home() {
   };
 
   useEffect(() => {
-    dispatch(getTipos());
-  }, [dispatch]);
-
-  const filtroTipos = useSelector((state) => state.arrayTipos);
-
-  useEffect(() => {
     dispatch(getPokemons());
   }, [dispatch]);
 
-  function handleFilterTipo(e) {
-    e.preventDefault();
-    dispatch(filterTipos(e.target.value));
-    setCurrentPage(1);
-    setOrden(`Ordenado ${e.target.value}`);
-  }
   function handleClick(e) {
     e.preventDefault();
     dispatch(getPokemons());
   }
 
-  function handleFilterCreated(e) {
-    e.preventDefault();
-    dispatch(filterCreated(e.target.value));
-    setCurrentPage(1);
-    setOrden(`Ordenado ${e.target.value}`);
-  }
-
-  function handleOrderAlfabetico(e) {
-    e.preventDefault();
-    dispatch(orderAlfabetico(e.target.value));
-    setCurrentPage(1);
-    setOrden(`Ordenado ${e.target.value}`);
-  }
-
-  function handleOrderFuerza(e) {
-    e.preventDefault();
-    dispatch(orderFuerza(e.target.value));
-    setCurrentPage(1);
-    setOrden(`Ordenado ${e.target.value}`);
-  }
-
   return (
     <div>
-      <Link to="/pokemon"> Crear Personaje </Link>
-      <h1> POKEMON </h1>
+      <Link to="/pokemon">
+        <button className={estilohome.btn}>New Pokemon</button>
+      </Link>
+      <h1 className={estilohome.h}> Pokedex </h1>
+      <h5>
+        Gives background information on the habitat or activities of a Pokemon
+        in the wild or other information on the pokemon's history or anatomy
+      </h5>
 
       <SearchBar />
 
@@ -86,44 +54,18 @@ export default function Home() {
         onClick={(e) => {
           handleClick(e);
         }}
+        className={estilohome.btn}
       >
-        Volver a cargar a todos los personajes
+        Reload
       </button>
 
       <div>
-        <label>Orden Alfabético</label>
-        <select onChange={(e) => handleOrderAlfabetico(e)}>
-          <option value="asc"> A-Z </option>
-          <option value="desc"> Z-A </option>
-        </select>
-
-        <label>Orden por Puntos de Fuerza</label>
-        <select onChange={(e) => handleOrderFuerza(e)}>
-          <option value="asc"> Ascendente </option>
-          <option value="desc"> Descendente </option>
-        </select>
-
-        <label>Existentes y Creados</label>
-        <select onChange={(e) => handleFilterCreated(e)}>
-          <option value="api"> Existentes </option>
-          <option value="created"> Creados </option>
-        </select>
-
-        <label>Orden por Tipos</label>
-        <select onChange={(e) => handleFilterTipo(e)}>
-          {filtroTipos?.map((t) => (
-            <option value={t.name} key={t.id}>
-              {t.name}
-            </option>
-          ))}
-        </select>
-
+        <Filters setCurrentPage={setCurrentPage} setOrden={setOrden} />
         <Paginado
           pokemonesPerPage={pokemonesPerPage}
           allPokemones={allPokemones.length}
           paginado={paginado}
         />
-
         <Cards currentPokemones={currentPokemones} />
       </div>
     </div>

@@ -1,13 +1,13 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import estilos from "./LandingPage.module.css";
 
-export default function LandingPage(){
+export default function LandingPage() {
   return (
-    <div>
-      <h1>Bienvenidos todos a la pokemon web!</h1>
-      <Link to= '/home'>
-      <button>Ingresar</button>
+    <div className={estilos.container}>
+      <Link to="/home">
+        <button className={estilos.btn}>S T A R T</button>
       </Link>
     </div>
-  )
+  );
 }

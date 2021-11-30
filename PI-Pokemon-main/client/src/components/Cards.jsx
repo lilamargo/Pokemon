@@ -1,10 +1,11 @@
 import React from "react";
 import Card from "./Card";
 import { Link } from "react-router-dom";
+import grid from "./Cards.module.css";
 
 export default function Cards({ currentPokemones }) {
   return (
-    <div>
+    <div className={grid.parent}>
       {currentPokemones?.map((el) => {
         return (
           <>
