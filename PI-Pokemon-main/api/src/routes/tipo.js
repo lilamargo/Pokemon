@@ -11,7 +11,7 @@ router.get("/", async (req, res, next) => {
     todosTipos.forEach((item) => {
       Tipo.findOrCreate({
         where: {
-          name: item.name.toUpperCase(),
+          name: item.name,
         },
       });
     });

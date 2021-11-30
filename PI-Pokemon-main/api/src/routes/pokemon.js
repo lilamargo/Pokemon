@@ -31,7 +31,7 @@ router.get("/", async (req, res, next) => {
             nameApi.data.sprites.versions["generation-v"]["black-white"]
               .animated.front_default,
           tipo: nameApi.data.types.map((t) => {
-            return { name: t.type.name.toUpperCase() };
+            return { name: t.type.name };
           }),
         });
       }
@@ -130,7 +130,7 @@ router.get("/", async (req, res, next) => {
             poke.data.sprites.versions["generation-v"]["black-white"].animated
               .front_default,
           tipo: poke.data.types.map((t) => {
-            return { name: t.type.name.toUpperCase() };
+            return { name: t.type.name };
           }),
         };
       });
@@ -151,20 +151,23 @@ router.get("/:id", async (req, res, next) => {
   if (id.length < 5) {
     try {
       let normalizedApiId = [];
-      const idApi = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
-      if (idApi.data) {
+      let idApi = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+      idApi = idApi.data;
+      let subrequest2 = await axios.get(idApi.species.url);
+      if (idApi) {
         normalizedApiId.push({
-          id: idApi.data.id,
-          name: idApi.data.name.toUpperCase(),
-          hp: idApi.data.stats[0].base_stat,
-          attack: idApi.data.stats[1].base_stat,
-          defense: idApi.data.stats[2].base_stat,
-          speed: idApi.data.stats[5].base_stat,
-          height: idApi.data.height,
-          weight: idApi.data.weight,
-          image: idApi.data.sprites.other.dream_world.front_default,
-          tipo: idApi.data.types.map((t) => {
-            return { name: t.type.name.toUpperCase() };
+          id: idApi.id,
+          name: idApi.name.toUpperCase(),
+          description: subrequest2.data.flavor_text_entries[8].flavor_text,
+          hp: idApi.stats[0].base_stat,
+          attack: idApi.stats[1].base_stat,
+          defense: idApi.stats[2].base_stat,
+          speed: idApi.stats[5].base_stat,
+          height: idApi.height,
+          weight: idApi.weight,
+          image: idApi.sprites.other.dream_world.front_default,
+          tipo: idApi.types.map((t) => {
+            return { name: t.type.name };
           }),
         });
       }
@@ -185,7 +188,6 @@ router.get("/:id", async (req, res, next) => {
         },
       });
 
-      console.log(idParams);
       let normalizePokemonIdDb = [];
       normalizePokemonIdDb.push({
         id: idParams?.dataValues.id,
@@ -195,8 +197,7 @@ router.get("/:id", async (req, res, next) => {
         speed: idParams?.dataValues.speed,
         height: idParams?.dataValues.height,
         weight: idParams?.dataValues.weight,
-        image:
-          "https://th.bing.com/th/id/OIP.GnjU36nTvQHBXrOdUH3tfQHaQA?w=161&h=350&c=7&r=0&o=5&dpr=1.25&pid=1.7",
+        image: "https://pbs.twimg.com/media/D0db2YMXcAA8U5T.png",
         tipo: idParams?.dataValues.tipos,
       });
       res.send(normalizePokemonIdDb);
