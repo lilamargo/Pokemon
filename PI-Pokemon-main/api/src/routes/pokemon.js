@@ -70,6 +70,7 @@ router.get("/", async (req, res, next) => {
         tipo: nameQuery[0]?.dataValues.tipos.map((n) => {
           return { name: n.name };
         }),
+        description: nameQuery[0]?.dataValues.description,
         createInDb: nameQuery[0]?.dataValues.createInDb,
       });
       res.send(normalizePokemonDb);
@@ -104,6 +105,7 @@ router.get("/", async (req, res, next) => {
           tipo: include[i].dataValues.tipos.map((n) => {
             return { name: n.name };
           }),
+          description: include[i].dataValues.description,
           createInDb: include[i].dataValues.createInDb,
         });
       }
@@ -199,6 +201,7 @@ router.get("/:id", async (req, res, next) => {
         weight: idParams?.dataValues.weight,
         image: "https://pbs.twimg.com/media/D0db2YMXcAA8U5T.png",
         tipo: idParams?.dataValues.tipos,
+        description: idParams?.dataValues.description,
       });
       res.send(normalizePokemonIdDb);
     } catch (error) {
@@ -211,8 +214,18 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    const { name, hp, attack, defense, speed, height, weight, image, tipo } =
-      req.body;
+    const {
+      name,
+      hp,
+      attack,
+      defense,
+      speed,
+      height,
+      weight,
+      image,
+      tipo,
+      description,
+    } = req.body;
     let newPokemon = await Pokemon.create({
       name,
       image,
@@ -223,6 +236,7 @@ router.post("/", async (req, res, next) => {
       height,
       weight,
       image,
+      description,
     });
 
     let tipoFind = await Tipo.findAll({
