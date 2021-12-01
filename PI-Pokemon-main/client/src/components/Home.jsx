@@ -9,6 +9,8 @@ import SearchBar from "./SearchBar";
 import Cards from "./Cards";
 import Filters from "./Filters";
 import estilohome from "./Home.module.css";
+import toggepi from "../recursos/toggepi.gif";
+import loading from "../recursos/loading.gif";
 
 export default function Home() {
   const dispatch = useDispatch(); //Para utilizar esa constante e ir despachando esas acciones.
@@ -56,7 +58,7 @@ export default function Home() {
         }}
         className={estilohome.btn}
       >
-        Reload
+        All Pokemons
       </button>
 
       <div>
@@ -66,7 +68,18 @@ export default function Home() {
           allPokemones={allPokemones.length}
           paginado={paginado}
         />
-        <Cards currentPokemones={currentPokemones} />
+        {currentPokemones.length > 0 ? (
+          <Cards currentPokemones={currentPokemones} />
+        ) : (
+          <div>
+            <div className={estilohome.div1}>
+              <img src={toggepi} alt="loading gif" />
+            </div>
+            <div className={estilohome.div1}>
+              <img src={loading} alt="loading gif" />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

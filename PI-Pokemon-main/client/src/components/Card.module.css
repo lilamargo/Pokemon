@@ -1,10 +1,10 @@
 .container {
   border-radius: 30px;
-  background: linear-gradient(145deg, #ffffff, #bdbbbb);
+  background: linear-gradient(145deg, #ffffff, #fdfdfd);
   box-shadow: 35px 35px 70px #d9d9d9, -35px -35px 70px #ffffff;
   height: 10rem;
   width: 20rem;
-  border: 6px double #a41c1c;
+  border: 5px groove rgba(224, 41, 41, 0.767);
 }
 
 .container:hover {

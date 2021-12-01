@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { postPokemon, getTipos } from "../actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
+import estilos from "./PokemonCreate.module.css";
 
 export default function PokemonCreate() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ export default function PokemonCreate() {
     image:
       "https://forums.pokemmo.eu/uploads/monthly_2020_10/1392966187789.gif.8f8685345a400e0e5d6ca3c2a1aba734.gif",
     tipo: [],
+    description: "",
   });
 
   function handleChange(e) {
@@ -62,6 +64,7 @@ export default function PokemonCreate() {
         weight: "",
         image: "",
         tipo: [],
+        description: "",
       });
     }
   }
@@ -74,7 +77,7 @@ export default function PokemonCreate() {
     <div>
       <Link to="/home">
         {" "}
-        <button>RETURN HOME</button>{" "}
+        <button className={estilos.btn}>Return</button>{" "}
       </Link>
 
       <h1>CUSTOM A NEW POKEMON!</h1>
@@ -102,6 +105,7 @@ export default function PokemonCreate() {
             onChange={(e) => handleChange(e)}
             placeholder="enter hit points"
             required
+            title="Please, enter only numbers"
           />
         </div>
         <div>
@@ -113,6 +117,7 @@ export default function PokemonCreate() {
             onChange={(e) => handleChange(e)}
             placeholder="enter attack points"
             required
+            title="Please, enter only numbers"
           />
         </div>
         <div>
@@ -124,6 +129,7 @@ export default function PokemonCreate() {
             onChange={(e) => handleChange(e)}
             placeholder="enter defense points"
             required
+            title="Please, enter only numbers"
           />
         </div>
         <div>
@@ -135,6 +141,7 @@ export default function PokemonCreate() {
             onChange={(e) => handleChange(e)}
             placeholder="enter speed points"
             required
+            title="Please, enter only numbers"
           />
         </div>
         <div>
@@ -146,6 +153,7 @@ export default function PokemonCreate() {
             name="height"
             onChange={(e) => handleChange(e)}
             placeholder="enter height"
+            title="Please, enter only numbers"
           />
         </div>
         <div>
@@ -158,6 +166,7 @@ export default function PokemonCreate() {
             onChange={(e) => handleChange(e)}
             placeholder="enter weight"
             required
+            title="Please, enter only numbers"
           />
         </div>
         <label>Type:</label>
@@ -175,8 +184,20 @@ export default function PokemonCreate() {
             <button onClick={(e) => handleDelete(e, t)}> X </button>
           </div>
         ))}
+        <div>
+          <textarea
+            name="description"
+            rows="10"
+            cols="40"
+            onChange={(e) => handleChange(e)}
+          >
+            Write a description of your Pokemon...
+          </textarea>
+        </div>
 
-        <button type="submit">SAVE</button>
+        <button type="submit" className={estilos.btn}>
+          Save
+        </button>
       </form>
     </div>
   );

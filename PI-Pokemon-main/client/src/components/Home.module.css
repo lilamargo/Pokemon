@@ -1,6 +1,8 @@
 .container {
-  background: #2c3e50;
-  height: 10rem;
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+  background-size: cover;
 }
 
 .wave {
@@ -47,6 +49,13 @@
   text-transform: none;
 }
 
+.h {
+  font-size: 72px;
+  background: -webkit-linear-gradient(rgb(0, 0, 0), rgb(199, 22, 22));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .btn {
   min-width: 130px;
   height: 40px;
@@ -60,21 +69,27 @@
   outline: none;
   border-radius: 5px;
   border: none;
-  background: #ced4da;
-  box-shadow: 0 5px #adb5bd;
+  background: #ef233c;
+  box-shadow: 0 5px #d90429;
 }
 .btn:hover {
-  box-shadow: 0 3px #adb5bd;
+  box-shadow: 0 3px #d90429;
   top: 1px;
 }
 .btn:active {
-  box-shadow: 0 0 #adb5bd;
+  box-shadow: 0 0 #d90429;
   top: 5px;
 }
 
-.h {
-  font-size: 72px;
-  background: -webkit-linear-gradient(rgb(0, 0, 0), rgb(199, 22, 22));
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.div1 {
+  min-width: 180px;
+  height: 50px;
+  justify-items: center;
+  align-items: center;
+}
+.div2 {
+  min-width: 180px;
+  height: 50px;
+  justify-items: center;
+  align-items: center;
 }

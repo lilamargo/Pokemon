@@ -22,3 +22,18 @@
   box-shadow: 0 0 #d90429;
   top: 5px;
 }
+
+.container {
+  border-radius: 30px;
+  background: linear-gradient(145deg, #ffffff, #fdfdfd);
+  box-shadow: 35px 35px 70px #d9d9d9, -35px -35px 70px #ffffff;
+  height: 35rem;
+  width: 90rem;
+  border: 5px groove rgba(224, 41, 41, 0.767);
+  align-content: space-evenly;
+}
+
+.divdetalle {
+  height: 20rem;
+  width: 600rem;
+}
