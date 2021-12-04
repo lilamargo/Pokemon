@@ -1,13 +1,16 @@
 .parent {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  grid-column-gap: 26px;
-  grid-row-gap: 19px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
   justify-content: space-evenly;
   justify-items: center;
   align-content: space-evenly;
   align-items: center;
+  margin-left: 10rem;
+  margin-right: 10rem;
+  margin-top: 3rem;
 }
 
 .parent > div {

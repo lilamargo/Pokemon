@@ -9,21 +9,12 @@ export default function Cards({ currentPokemones }) {
       {currentPokemones?.map((el) => {
         return (
           <>
-            <Link to={"/home/" + el.id}>
+            <Link to={"/home/" + el.id} key={el.id}>
               <Card
-                name={el.name}
-                image={
-                  el.image ? (
-                    el.image
-                  ) : (
-                    <img
-                      src="https://forums.pokemmo.eu/uploads/monthly_2020_10/1392966187789.gif.8f8685345a400e0e5d6ca3c2a1aba734.gif"
-                      alt=""
-                      key={el.id}
-                    />
-                  )
-                }
+                name={el.name ? el.name : "Not Found"}
+                image={el.image ? el.image : ""}
                 tipo={el.tipo?.map((n) => n.name + " ")}
+                attack={el.attack ? el.attack : " "}
               />
             </Link>
           </>

@@ -1,5 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import stilos from "./Paginado.module.css";
 
 export default function Paginado({ pokemonesPerPage, allPokemones, paginado }) {
   const pageNumbers = [];
@@ -8,11 +8,13 @@ export default function Paginado({ pokemonesPerPage, allPokemones, paginado }) {
   }
   return (
     <nav>
-      <ul className="paginado">
+      <ul>
         {pageNumbers &&
           pageNumbers.map((number) => (
-            <li className="number" key={number}>
-              <a onClick={() => paginado(number)}>{number}</a>
+            <li className={stilos.list} key={number}>
+              <button onClick={() => paginado(number)} key={number}>
+                {number}
+              </button>
             </li>
           ))}
       </ul>

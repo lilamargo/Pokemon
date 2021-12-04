@@ -21,11 +21,12 @@ export default function SearchBar() {
   }
 
   return (
-    <div>
+    <div className={estilo.searchcont}>
       <input
         type="text"
-        placeholder="search pokemon"
+        placeholder="Search Pokemon..."
         onChange={(e) => handleInputChange(e)}
+        className={estilo.input}
       />
       <button
         type="submit"
@@ -33,7 +34,7 @@ export default function SearchBar() {
         className={estilo.btn}
       >
         {" "}
-        Search{" "}
+        ►{" "}
       </button>
     </div>
   );

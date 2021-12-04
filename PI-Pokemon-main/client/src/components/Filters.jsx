@@ -9,6 +9,8 @@ import {
   orderFuerza,
 } from "../actions/index.js";
 
+import estilos from "./Filters.module.css";
+
 export default function Filters({ setCurrentPage, setOrden }) {
   const dispatch = useDispatch();
 
@@ -47,33 +49,44 @@ export default function Filters({ setCurrentPage, setOrden }) {
   }
 
   return (
-    <div>
-      <label>Category</label>
-      <select onChange={(e) => handleFilterCreated(e)}>
-        <option value="api"> Original </option>
-        <option value="created"> Custom </option>
-      </select>
+    <div className={estilos.contener}>
+      <div>
+        <label>Category</label>
+        <select onChange={(e) => handleFilterCreated(e)}>
+          <option value="api"> Original </option>
+          <option value="created"> Custom </option>
+        </select>
+      </div>
 
-      <label>Order By Name</label>
-      <select onChange={(e) => handleOrderAlfabetico(e)}>
-        <option value="asc"> A-Z </option>
-        <option value="desc"> Z-A </option>
-      </select>
+      <div>
+        <label>By Name</label>
+        <select onChange={(e) => handleOrderAlfabetico(e)}>
+          <option value="asc"> A-Z </option>
+          <option value="desc"> Z-A </option>
+        </select>
+      </div>
 
-      <label>Order By Attack</label>
-      <select onChange={(e) => handleOrderFuerza(e)}>
-        <option value="asc"> Higher </option>
-        <option value="desc"> Less </option>
-      </select>
+      <div>
+        <label>By Attack</label>
+        <select onChange={(e) => handleOrderFuerza(e)}>
+          <option value="asc"> Higher </option>
+          <option value="desc"> Less </option>
+        </select>
+      </div>
 
-      <label>Order By Types</label>
-      <select onChange={(e) => handleFilterTipo(e)}>
-        {filtroTipos?.map((t) => (
-          <option value={t.name} key={t.id}>
-            {t.name}
+      <div>
+        <label>By Types</label>
+        <select onChange={(e) => handleFilterTipo(e)}>
+          <option selected disabled>
+            Type
           </option>
-        ))}
-      </select>
+          {filtroTipos?.map((t) => (
+            <option value={t.name} key={t.id}>
+              {t.name}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 }

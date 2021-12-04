@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;1,400&family=Patrick+Hand&family=Press+Start+2P&display=swap");
+
+.contener {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.contener div {
+  padding: 1rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  box-shadow: none;
+}
+
+.contener select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  box-shadow: none;
+  border: 1;
+  background-image: none;
+  position: relative;
+  display: flex;
+  width: 10rem;
+  height: 2rem;
+  line-height: 1rem;
+  overflow: hidden;
+  border-radius: 7px;
+  color: rgb(250, 47, 20);
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 15px;
+  padding: 0 1.5rem;
+  border-color: #458ce9;
+}
+
+.contener label {
+  padding: 0.7em;
+  font-family: "Press Start 2P", cursive;
+  font-size: 14px;
+  color: #458ce9;
+  text-shadow: 0 0.5px 0 rgb(14, 14, 14);
+}

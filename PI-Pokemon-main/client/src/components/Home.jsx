@@ -1,9 +1,8 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+// import { Link } from "react-router-dom";
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPokemons } from "../actions/index.js";
-import { Link } from "react-router-dom";
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
 import Cards from "./Cards";
@@ -11,6 +10,7 @@ import Filters from "./Filters";
 import estilohome from "./Home.module.css";
 import toggepi from "../recursos/toggepi.gif";
 import loading from "../recursos/loading.gif";
+import logo from "../recursos/logo.png";
 
 export default function Home() {
   const dispatch = useDispatch(); //Para utilizar esa constante e ir despachando esas acciones.
@@ -41,42 +41,55 @@ export default function Home() {
 
   return (
     <div>
-      <Link to="/pokemon">
-        <button className={estilohome.btn}>New Pokemon</button>
-      </Link>
-      <h1 className={estilohome.h}> Pokedex </h1>
-      <h5>
-        Gives background information on the habitat or activities of a Pokemon
-        in the wild or other information on the pokemon's history or anatomy
-      </h5>
+      <header className={estilohome.header}>
+        <div className={estilohome.logo}>
+          <img src={logo} alt="Logo imagen pokemon" />
+        </div>
+        <SearchBar />
+        <nav className={estilohome.navmenu}>
+          <ul>
+            <li>
+              <a href="/pokemon">New Pokemon!</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-      <SearchBar />
+      <h1 className={estilohome.h}> Pokédex </h1>
+      <div className={estilohome.hello}>
+        <p>
+          Hello there trainers! Welcome to the Pokédex where you will find
+          background information about the habitat or activities of a Pokémon in
+          the wild or other information about the history or anatomy of the
+          Pokémon.
+        </p>
+      </div>
 
+      <Filters setCurrentPage={setCurrentPage} setOrden={setOrden} />
       <button
         onClick={(e) => {
           handleClick(e);
         }}
         className={estilohome.btn}
       >
-        All Pokemons
+        RELOAD
       </button>
+      <Paginado
+        pokemonesPerPage={pokemonesPerPage}
+        allPokemones={allPokemones.length}
+        paginado={paginado}
+      />
 
       <div>
-        <Filters setCurrentPage={setCurrentPage} setOrden={setOrden} />
-        <Paginado
-          pokemonesPerPage={pokemonesPerPage}
-          allPokemones={allPokemones.length}
-          paginado={paginado}
-        />
         {currentPokemones.length > 0 ? (
           <Cards currentPokemones={currentPokemones} />
         ) : (
           <div>
             <div className={estilohome.div1}>
-              <img src={toggepi} alt="loading gif" />
+              <img src={loading} alt="loading gif" />
             </div>
             <div className={estilohome.div1}>
-              <img src={loading} alt="loading gif" />
+              <img src={toggepi} alt="loading gif" />
             </div>
           </div>
         )}
