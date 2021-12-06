@@ -1,39 +1,98 @@
-.btn {
-  min-width: 130px;
-  height: 40px;
-  color: #fff;
-  padding: 5px 10px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-  outline: none;
-  border-radius: 5px;
-  border: none;
-  background: #ef233c;
-  box-shadow: 0 5px #d90429;
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;1,400&family=Patrick+Hand&family=Press+Start+2P&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
-.btn:hover {
-  box-shadow: 0 3px #d90429;
-  top: 1px;
+.body {
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-image: url(../recursos/fondo1.jpg);
 }
-.btn:active {
-  box-shadow: 0 0 #d90429;
-  top: 5px;
+
+/* --------------Navbar-------------- */
+.logo img {
+  width: 190px;
+}
+header {
+  font-family: "Press Start 2P", cursive;
+  background-color: rgb(43, 42, 42);
+  display: flex;
+  height: 5rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 3rem;
+}
+.navmenu ul {
+  display: flex;
+  align-items: center;
+}
+
+.navmenu li {
+  margin-right: 3rem;
+  padding: 0.5rem 0.5rem;
+}
+
+.a1 {
+  color: #f8cb37;
+}
+
+.a2 {
+  color: #f83737;
+}
+
+.navmenu a:hover {
+  color: #f8cb37;
+}
+
+/* _________________________________ */
+
+.titulo {
+  width: 1000px !important;
+  background-color: rgba(110, 193, 238, 0.808);
+  margin: auto !important;
+  margin-top: 2rem !important;
+  color: rgb(255, 255, 255);
+  padding: 10px 0px 10px 0px;
+  text-align: center;
+  border-radius: 15px 15px 0px 0px;
+}
+.titulo h1 {
+  background: -webkit-linear-gradient(#e71010, rgb(195, 211, 50));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Press Start 2P", cursive;
 }
 
 .container {
-  border-radius: 30px;
-  background: linear-gradient(145deg, #ffffff, #fdfdfd);
-  box-shadow: 35px 35px 70px #d9d9d9, -35px -35px 70px #ffffff;
-  height: 35rem;
-  width: 90rem;
-  border: 5px groove rgba(224, 41, 41, 0.767);
-  align-content: space-evenly;
+  background-image: url(../recursos/fondo1.jpg);
+  width: 1000px !important;
+  height: 600px;
+  margin: auto !important;
+  box-shadow: 0px 20px 20px #a9adf1;
+  border-radius: 15px 15px 0px 0px;
 }
 
-.divdetalle {
-  height: 20rem;
-  width: 600rem;
+.description {
+  margin: 2rem;
+  justify-content: center;
+}
+
+.stats {
+  display: column;
+  text-align: justify;
+  margin-left: 4.5rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  color: #1025e7;
+}
+
+.id {
+  margin-top: 6.5rem;
+  display: flex;
+  justify-content: center;
+  color: #888484;
+  font-size: 10px;
 }

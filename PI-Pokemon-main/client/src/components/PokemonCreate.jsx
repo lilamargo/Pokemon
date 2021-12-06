@@ -1,9 +1,9 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { postPokemon, getTipos } from "../actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import estilos from "./PokemonCreate.module.css";
+import logo from "../recursos/logo.png";
 
 export default function PokemonCreate() {
   const dispatch = useDispatch();
@@ -74,131 +74,146 @@ export default function PokemonCreate() {
   }, [dispatch]);
 
   return (
-    <div>
-      <Link to="/home">
-        {" "}
-        <button className={estilos.btn}>Return</button>{" "}
-      </Link>
+    <div className={estilos.body}>
+      <header className={estilos.header}>
+        <div className={estilos.logo}>
+          <img src={logo} alt="Logo imagen pokemon" />
+        </div>
+        <nav className={estilos.navmenu}>
+          <ul>
+            <li>
+              <a href="/home">HOME</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-      <h1>CUSTOM A NEW POKEMON!</h1>
-
-      <form onSubmit={(e) => handleSubmit(e)}>
-        <div>
-          <label>Name:</label>
-          <input
-            type="text"
-            pattern="[a-zA-Z ]{2,254}"
-            value={input.name}
-            name="name"
-            onChange={(e) => handleChange(e)}
-            placeholder="enter a original name"
-            required
-            title="Please, enter only text without numbers"
-          />
-        </div>
-        <div>
-          <label>HP:</label>
-          <input
-            type="number"
-            value={input.hp}
-            name="hp"
-            onChange={(e) => handleChange(e)}
-            placeholder="enter hit points"
-            required
-            title="Please, enter only numbers"
-          />
-        </div>
-        <div>
-          <label>Attack:</label>
-          <input
-            type="number"
-            value={input.attack}
-            name="attack"
-            onChange={(e) => handleChange(e)}
-            placeholder="enter attack points"
-            required
-            title="Please, enter only numbers"
-          />
-        </div>
-        <div>
-          <label>Defense:</label>
-          <input
-            type="number"
-            value={input.defense}
-            name="defense"
-            onChange={(e) => handleChange(e)}
-            placeholder="enter defense points"
-            required
-            title="Please, enter only numbers"
-          />
-        </div>
-        <div>
-          <label>Speed:</label>
-          <input
-            type="number"
-            value={input.speed}
-            name="speed"
-            onChange={(e) => handleChange(e)}
-            placeholder="enter speed points"
-            required
-            title="Please, enter only numbers"
-          />
-        </div>
-        <div>
-          <label>Height:</label>
-          <input
-            type="number"
-            step="any"
-            value={input.height}
-            name="height"
-            onChange={(e) => handleChange(e)}
-            placeholder="enter height"
-            title="Please, enter only numbers"
-          />
-        </div>
-        <div>
-          <label>Weight:</label>
-          <input
-            type="number"
-            step="any"
-            value={input.weight}
-            name="weight"
-            onChange={(e) => handleChange(e)}
-            placeholder="enter weight"
-            required
-            title="Please, enter only numbers"
-          />
-        </div>
-        <label>Type:</label>
-        <select onChange={(e) => handleSelect(e)}>
-          <option value="none" defaultValue title="">
-            Select Type(s)
-          </option>
-          {estadoTipos?.map((t) => (
-            <option value={t.name}>{t.name}</option>
-          ))}
-        </select>
-        {input.tipo?.map((t) => (
-          <div>
-            <p>{t}</p>
-            <button onClick={(e) => handleDelete(e, t)}> X </button>
+      <div className={estilos.titulo}>
+        <h1>CUSTOM A NEW POKEMON!</h1>
+      </div>
+      <div className={estilos.main}>
+        <form onSubmit={(e) => handleSubmit(e)} className={estilos.form}>
+          <div className={estilos.name}>
+            <h3>NAME</h3>
+            <input
+              type="text"
+              pattern="[a-zA-Z ]{2,254}"
+              value={input.name}
+              name="name"
+              onChange={(e) => handleChange(e)}
+              required
+              title="Please, enter only text without numbers"
+            />
           </div>
-        ))}
-        <div>
-          <textarea
-            name="description"
-            rows="10"
-            cols="40"
-            onChange={(e) => handleChange(e)}
-          >
-            Write a description of your Pokemon...
-          </textarea>
-        </div>
+          <h3>STATS</h3>
+          <div className={estilos.stats}>
+            <label>HP:</label>
+            <input
+              type="number"
+              value={input.hp}
+              name="hp"
+              onChange={(e) => handleChange(e)}
+              required
+              title="Please, enter only numbers"
+              min="1"
+              max="999"
+            />
 
-        <button type="submit" className={estilos.btn}>
-          Save
-        </button>
-      </form>
+            <label>Attack:</label>
+            <input
+              type="number"
+              value={input.attack}
+              name="attack"
+              onChange={(e) => handleChange(e)}
+              required
+              title="Please, enter only numbers"
+              min="1"
+              max="999"
+            />
+
+            <label>Defense:</label>
+            <input
+              type="number"
+              value={input.defense}
+              name="defense"
+              onChange={(e) => handleChange(e)}
+              required
+              title="Please, enter only numbers"
+              min="1"
+              max="999"
+            />
+
+            <label>Speed:</label>
+            <input
+              type="number"
+              value={input.speed}
+              name="speed"
+              onChange={(e) => handleChange(e)}
+              required
+              title="Please, enter only numbers"
+              min="1"
+              max="999"
+            />
+
+            <label>Height:</label>
+            <input
+              type="number"
+              step="any"
+              value={input.height}
+              name="height"
+              onChange={(e) => handleChange(e)}
+              title="Please, enter only numbers"
+              min="1"
+              max="999"
+            />
+
+            <label>Weight:</label>
+            <input
+              type="number"
+              step="any"
+              value={input.weight}
+              name="weight"
+              onChange={(e) => handleChange(e)}
+              required
+              title="Please, enter only numbers"
+              min="1"
+              max="999"
+            />
+          </div>
+          <div className={estilos.description}>
+            <h3>DESCRIPTION</h3>
+            <textarea
+              name="description"
+              rows="10"
+              cols="40"
+              onChange={(e) => handleChange(e)}
+            >
+              Write a nice description...
+            </textarea>
+          </div>
+          <h3>TYPES</h3>
+          <div className={estilos.type}>
+            <label>Type:</label>
+            <select onChange={(e) => handleSelect(e)}>
+              <option value="none" defaultValue title="">
+                Select Type(s)
+              </option>
+              {estadoTipos?.map((t) => (
+                <option value={t.name}>{t.name}</option>
+              ))}
+            </select>
+          </div>
+          {input.tipo?.map((t) => (
+            <div className={estilos.cuadrito}>
+              <p>{t}</p>
+              <button onClick={(e) => handleDelete(e, t)}> X </button>
+            </div>
+          ))}
+          <div className={estilos.btn}>
+            <button type="submit">SAVE</button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

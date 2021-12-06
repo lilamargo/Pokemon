@@ -43,18 +43,16 @@ a {
   text-shadow: 0 2px 0 rgb(41, 40, 40);
 }
 
-/* .htipo {
-  display: flex;
-  justify-items: center;
-  padding: 0.05rem;
-  margin-left: 0.5em;
-  margin-right: 1rem;
+.htipo {
+  padding-top: 1rem;
+  color: #f1e424;
+  font-style: bold;
 }
 
-.htipo ul {
+/* .htipo ul {
   display: flex;
-  margin-left: 0.5em; */
-/* align-items: center; */
+  margin-left: 0.5em;
+align-items: center;
 /* } */
 
 /* .htipo li { */

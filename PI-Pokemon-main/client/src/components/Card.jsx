@@ -7,7 +7,6 @@ export default function Card({ name, image, tipo, attack }) {
       <img src={image} alt="" key="Imagen" />
       <div className={stilos.container2}>
         <h3 className={stilos.hname}>{name}</h3>
-        <h4 className={stilos.container2}>Attack: {attack}</h4>
         <div className={stilos.htipo}>
           <ul>
             <li>
