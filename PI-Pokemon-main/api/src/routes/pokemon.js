@@ -199,7 +199,8 @@ router.get("/:id", async (req, res, next) => {
         speed: idParams?.dataValues.speed,
         height: idParams?.dataValues.height,
         weight: idParams?.dataValues.weight,
-        image: "https://pbs.twimg.com/media/D0db2YMXcAA8U5T.png",
+        image:
+          "https://i.pinimg.com/originals/41/f5/f6/41f5f6f05b87253bd8987ff23b383ff8.png",
         tipo: idParams?.dataValues.tipos,
         description: idParams?.dataValues.description,
       });
