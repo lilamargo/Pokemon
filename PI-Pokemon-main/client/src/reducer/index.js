@@ -56,19 +56,19 @@ function rootReducer(state = initialState, action) {
         action.payload === "asc"
           ? state.pokemones.sort(function (a, b) {
               if (a.name > b.name) {
-                return 1;
+                return -1;
               }
               if (b.name > a.name) {
-                return -1;
+                return 1;
               }
               return 0;
             })
           : state.pokemones.sort(function (a, b) {
               if (a.name > b.name) {
-                return -1;
+                return 1;
               }
               if (b.name > a.name) {
-                return 1;
+                return -1;
               }
               return 0;
             });
