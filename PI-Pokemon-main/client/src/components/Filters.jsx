@@ -53,6 +53,9 @@ export default function Filters({ setCurrentPage, setOrden }) {
       <div>
         <label>Category</label>
         <select onChange={(e) => handleFilterCreated(e)}>
+          <option selected disabled>
+            Category
+          </option>
           <option value="api"> Original </option>
           <option value="created"> Custom </option>
         </select>
