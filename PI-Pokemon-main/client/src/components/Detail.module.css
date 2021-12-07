@@ -73,11 +73,13 @@ header {
   margin: auto !important;
   box-shadow: 0px 20px 20px #a9adf1;
   border-radius: 15px 15px 0px 0px;
+  font-family: "Chakra Petch", sans-serif;
 }
 
 .description {
   margin: 2rem;
   justify-content: center;
+  color: rgb(94, 3, 3);
 }
 
 .stats {
