@@ -2,20 +2,27 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetails } from "../actions/index.js";
 import { useEffect } from "react";
-import pandilla from "../recursos/pandilla.png";
+import loading from "../recursos/loading.gif";
 import estilos from "./Detail.module.css";
-import logo from "../recursos/logo.png";
 
 export default function Detail(props) {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getDetails(props.match.params.id));
-  }, [dispatch, props.match.params.id]); // QUITAR props.match.params.id PORQUE PUEDE QUE CAUSE PROBLEMAS, SELE NO LO PUSO
+    setTimeout(3);
+  });
+  useEffect(() => {
+    // dispatch(getDetails(props.match.params.id));
+    dispatch(getDetails(props.id));
+  }, [dispatch, props.id]); // AGREGARRRRRRR props.match.params.id PORQUE PUEDE QUE CAUSE PROBLEMAS, SELE NO LO PUSO
 
   const myPokemon = useSelector((state) => state.detail);
+  const handleClose = (e) => {
+    e.preventDefault();
+    props.display(false);
+  };
   return (
     <div className={estilos.body}>
-      <header className={estilos.header}>
+      {/* <header className={estilos.header}>
         <div className={estilos.logo}>
           <img src={logo} alt="Logo imagen pokemon" />
         </div>
@@ -33,9 +40,9 @@ export default function Detail(props) {
             </li>
           </ul>
         </nav>
-      </header>
+      </header> */}
 
-      {myPokemon.length > 0 ? (
+      {myPokemon.length > 0 && (
         <div className={estilos.container}>
           <div className={estilos.titulo}>
             <h1>{myPokemon[0].name}</h1>
@@ -49,8 +56,8 @@ export default function Detail(props) {
             <img
               src={myPokemon[0].image ? myPokemon[0].image : myPokemon[0].img}
               alt=""
-              width="500px"
-              height="300px"
+              width="250px"
+              height="150px"
               align="right"
             />
           </div>
@@ -67,9 +74,10 @@ export default function Detail(props) {
           <span className={estilos.id}>
             <h2>ID Number: {myPokemon[0].id}</h2>
           </span>
+          <button className={estilos.btn} onClick={(e) => handleClose(e)}>
+            Close
+          </button>
         </div>
-      ) : (
-        <img src={pandilla} alt="loaging gif" />
       )}
     </div>
   );

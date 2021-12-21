@@ -4,6 +4,7 @@ import { postPokemon, getTipos } from "../actions/index.js";
 import { useDispatch, useSelector } from "react-redux";
 import estilos from "./PokemonCreate.module.css";
 import logo from "../recursos/logo.png";
+import Swal from "sweetalert2";
 
 export default function PokemonCreate() {
   const dispatch = useDispatch();
@@ -50,10 +51,27 @@ export default function PokemonCreate() {
     e.preventDefault();
 
     if (input.tipo.length > 2) {
-      alert("Please, select maxim 2 types");
+      Swal.fire({
+        title: "Error!",
+        text: "You can only add up to 2 types",
+        icon: "error",
+        confirmButtonText: "Return",
+      });
     } else {
       dispatch(postPokemon(input));
-      alert("Pokemon Creado!!");
+      Swal.fire({
+        icon: "success",
+        title: "Congrats, You have a new Pokemon!",
+        width: 600,
+        padding: "3em",
+        color: "#716add",
+        background: "#fff",
+        backdrop: `
+    rgba(0,0,123,0.4)
+    left top
+    no-repeat
+  `,
+      });
       setInput({
         name: "",
         hp: "",

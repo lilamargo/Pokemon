@@ -13,7 +13,7 @@ function App() {
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/home" component={Home} />
           <Route path="/pokemon" component={PokemonCreate} />
-          <Route path="/home/:id" component={Detail} />
+          {/* <Route path="/home/:id" component={Detail} /> */}
         </Switch>
       </div>
     </BrowserRouter>

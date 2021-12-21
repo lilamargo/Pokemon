@@ -112,20 +112,20 @@ router.get("/", async (req, res, next) => {
 
       //-------OBTENER TODOS LOS POKEMONES DE LA API ------------------------
 
-      // let apiLink = await axios.get(
-      //   "https://pokeapi.co/api/v2/pokemon?limit=40"
-      // );
-      // apiLink = apiLink.data.results;
-      // let subrequest = apiLink.map((el) => axios.get(el.url));
-      // let promesaCumplida = await Promise.all(subrequest);
-
-      let infoApi = await axios.get("https://pokeapi.co/api/v2/pokemon");
-      let infoApiPokemons = infoApi.data.results;
-      let infoApiNext = await axios.get(infoApi.data.next);
-      let infoApiPokemonsNext = infoApiNext.data.results;
-      let concatenar = infoApiPokemons.concat(infoApiPokemonsNext);
-      let subrequest = concatenar.map((el) => axios.get(el.url));
+      let apiLink = await axios.get(
+        "https://pokeapi.co/api/v2/pokemon?limit=60"
+      );
+      apiLink = apiLink.data.results;
+      let subrequest = apiLink.map((el) => axios.get(el.url));
       let promesaCumplida = await Promise.all(subrequest);
+
+      // let infoApi = await axios.get("https://pokeapi.co/api/v2/pokemon");
+      // let infoApiPokemons = infoApi.data.results;
+      // let infoApiNext = await axios.get(infoApi.data.next);
+      // let infoApiPokemonsNext = infoApiNext.data.results;
+      // let concatenar = infoApiPokemons.concat(infoApiPokemonsNext);
+      // let subrequest = concatenar.map((el) => axios.get(el.url));
+      // let promesaCumplida = await Promise.all(subrequest);
 
       promesaCumplida = await promesaCumplida.map((poke) => {
         return {
