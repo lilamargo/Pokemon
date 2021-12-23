@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;1,400&family=Patrick+Hand&family=Press+Start+2P&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+/* --------------Navbar-------------- */
+.logo img {
+  width: 190px;
+}
+header {
+  font-family: "Press Start 2P", cursive;
+  background-color: rgb(43, 42, 42);
+  display: flex;
+  height: 5rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+}
+.navmenu ul {
+  display: flex;
+  align-items: center;
+}
+
+.navmenu li {
+  margin-right: 1.5rem;
+}
+
+.navmenu a {
+  color: #f83737;
+}
+
+.navmenu a:hover {
+  color: #f8db37;
+}
+
+/* _________________________________ */
+
+.container {
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  background-size: cover;
+}
+
+.wave {
+  position: absolute;
+  height: 110px;
+  width: 100%;
+  background: #2c3e50;
+  bottom: 0;
+}
+
+.wave::before,
+.wave::after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 100% 50%;
+}
+
+.wave::before {
+  width: 55%;
+  height: 109%;
+  background-color: #fff;
+  right: -1.5%;
+  top: 60%;
+}
+.wave::after {
+  width: 55%;
+  height: 100%;
+  background-color: #2c3e50;
+  left: -1.5%;
+  top: 40%;
+}
+
+.h {
+  font-size: 72px;
+  background: -webkit-linear-gradient(#3c7ec9, rgb(252, 81, 81));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Press Start 2P", cursive;
+  margin: 2rem;
+}
+
+.btn {
+  min-width: 130px;
+  height: 40px;
+  color: #f8db37;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  background: #3c7ec9;
+}
+.btn:hover {
+  box-shadow: 0 3px #458ce9;
+  top: 1px;
+}
+.btn:active {
+  top: 5px;
+}
+
+.caja {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.togge {
+  width: 10em;
+  height: 8em;
+  margin: center;
+  display: flex;
+  position: fixed;
+  margin-top: 2em;
+}
+
+.loader {
+  width: 18em;
+  height: 15em;
+  margin: center;
+  display: flex;
+  margin-bottom: -100;
+  margin-top: 3em;
+}
+
+.hello {
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.7rem;
+  border: 5px solid red;
+}
+
+.hello p {
+  font-family: "Chakra Petch", sans-serif;
+  font-size: 1.5em;
+  color: rgb(110, 109, 109);
+}

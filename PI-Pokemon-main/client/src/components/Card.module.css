@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,500;1,400&family=Patrick+Hand&family=Press+Start+2P&display=swap");
+a {
+  text-decoration: none;
+}
+
+.container {
+  display: column;
+  align-items: center;
+  border-radius: 30px;
+  background: linear-gradient(180deg, #e77676, #3c7ec9);
+  box-shadow: 10px 10px 20px #b0b4ee, -20px -20px 20px #ffffff;
+  height: 10rem;
+  width: 15rem;
+  margin: 1rem;
+  transition: all 0.5s;
+  color: #ffffff;
+}
+
+.container > img {
+  position: relative;
+  bottom: 1.8rem;
+  width: 80px;
+  height: 70px;
+}
+
+.container:hover {
+  background-position: right center;
+  transform: scale(1.1);
+  box-shadow: 10px 10px 20px #f86666, -20px -20px 20px #ffffff;
+}
+
+.container2 {
+  bottom: 1rem;
+  position: relative;
+  align-items: center;
+  font-family: "Chakra Petch", sans-serif;
+  margin: center;
+}
+
+.hname {
+  font-family: "Chakra Petch", sans-serif;
+  text-shadow: 0 2px 0 rgb(41, 40, 40);
+}
+
+.htipo {
+  padding-top: 1rem;
+  color: #f1e424;
+  font-style: bold;
+}

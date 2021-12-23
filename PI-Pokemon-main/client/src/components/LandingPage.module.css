@@ -1,0 +1,33 @@
+.container {
+  height: 100vh;
+  width: 100%;
+  background-image: url(../recursos/imagen.png);
+  background-size: cover;
+}
+
+.btn {
+  position: absolute;
+  top: 65%;
+  left: 18rem;
+  min-width: 180px;
+  height: 50px;
+  color: rgb(255, 255, 255);
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 10px;
+  border: none;
+  background-size: 130% auto;
+  background-image: linear-gradient(315deg, #fdfdfd 0%, #195aab 75%);
+}
+.btn:hover {
+  background-position: right center;
+  transform: scale(1.1);
+  color: #b61414;
+  background-image: linear-gradient(315deg, #195aab 0%, #ffffff 75%);
+}
