@@ -108,15 +108,29 @@ header {
   top: 5px;
 }
 
-.div1 {
-  min-width: 180px;
-  height: 50px;
-  justify-items: center;
+.caja {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  margin-left: 10rem;
-  margin-right: 10rem;
-  padding: 1rem;
-  margin-top: 3rem;
+  justify-content: space-between;
+}
+
+.togge {
+  width: 10em;
+  height: 8em;
+  margin: center;
+  display: flex;
+  position: fixed;
+  margin-top: 2em;
+}
+
+.loader {
+  width: 18em;
+  height: 15em;
+  margin: center;
+  display: flex;
+  margin-bottom: -100;
+  margin-top: 3em;
 }
 
 .hello {

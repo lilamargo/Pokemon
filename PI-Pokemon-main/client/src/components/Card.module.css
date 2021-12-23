@@ -39,7 +39,6 @@ a {
 
 .hname {
   font-family: "Chakra Petch", sans-serif;
-  /* margin-bottom: 19px; */
   text-shadow: 0 2px 0 rgb(41, 40, 40);
 }
 
@@ -48,16 +47,3 @@ a {
   color: #f1e424;
   font-style: bold;
 }
-
-/* .htipo ul {
-  display: flex;
-  margin-left: 0.5em;
-align-items: center;
-/* } */
-
-/* .htipo li { */
-/* display: flex; */
-/* align-items: center; */
-
-/* color: rgb(255, 208, 0);
-} */

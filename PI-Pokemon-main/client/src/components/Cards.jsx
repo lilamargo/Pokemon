@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Card from "./Card";
-import { Link } from "react-router-dom";
 import grid from "./Cards.module.css";
 import not from "../recursos/not.gif";
 import Detail from "./Detail";
@@ -13,7 +12,6 @@ export default function Cards({ currentPokemones }) {
       {currentPokemones?.map((el) => {
         return (
           <>
-            {/* <Link to={"/home/" + el.id} key={el.id}> */}
             <p
               onClick={() => {
                 setDisplayDetail(!displayDetail);
@@ -26,8 +24,6 @@ export default function Cards({ currentPokemones }) {
                 tipo={el.tipo?.map((n) => n.name + " ")}
               />
             </p>
-
-            {/* </Link> */}
           </>
         );
       })}

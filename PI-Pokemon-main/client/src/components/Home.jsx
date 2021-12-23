@@ -80,20 +80,15 @@ export default function Home() {
         paginado={paginado}
       />
 
-      <div>
-        {currentPokemones.length > 0 ? (
-          <Cards currentPokemones={currentPokemones} />
-        ) : (
-          <div>
-            <div className={estilohome.div1}>
-              <img src={loading} alt="loading gif" />
-            </div>
-            <div className={estilohome.div1}>
-              <img src={toggepi} alt="loading gif" />
-            </div>
-          </div>
-        )}
-      </div>
+      {currentPokemones.length > 0 ? (
+        <Cards currentPokemones={currentPokemones} />
+      ) : (
+        <div className={estilohome.caja}>
+          <img src={loading} alt="loading gif" className={estilohome.loader} />
+
+          <img src={toggepi} alt="loading gif" className={estilohome.togge} />
+        </div>
+      )}
     </div>
   );
 }

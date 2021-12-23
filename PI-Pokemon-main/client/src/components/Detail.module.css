@@ -6,127 +6,104 @@
   list-style: none;
 }
 .body {
-  /* height: 100vh;
-  width: 100%;
-  background-size: cover;
-  background-image: url(../recursos/fondo1.jpg); */
   display: flex;
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background-color: #3696d645;
+  background-color: #01233a98;
   top: 0;
   align-items: center;
   justify-content: center;
   z-index: 5;
 }
 
-/* --------------Navbar-------------- */
-.logo img {
-  width: 190px;
-}
-header {
-  font-family: "Press Start 2P", cursive;
-  background-color: rgb(43, 42, 42);
-  display: flex;
-  height: 5rem;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 3rem;
-}
-.navmenu ul {
-  display: flex;
-  align-items: center;
-}
-
-.navmenu li {
-  margin-right: 3rem;
-  padding: 0.5rem 0.5rem;
-}
-
-.a1 {
-  color: #f8cb37;
-}
-
-.a2 {
-  color: #f83737;
-}
-
-.navmenu a:hover {
-  color: #f8cb37;
-}
-
-/* _________________________________ */
-
 .titulo {
-  width: 900px !important;
-  background-color: rgba(110, 193, 238, 0.808);
+  width: 590px !important;
+  background-color: rgba(32, 199, 96, 0.158);
   margin: auto !important;
-  margin-top: 2rem !important;
-  color: rgb(255, 255, 255);
-  padding: 10px 0px 10px 0px;
+  margin-top: 0rem !important;
+  color: rgb(8, 8, 8);
+  padding: 10px 10px 10px 0px;
   text-align: center;
   border-radius: 15px 15px 0px 0px;
 }
 .titulo h1 {
-  background: -webkit-linear-gradient(#e71010, rgb(195, 211, 50));
+  background: -webkit-linear-gradient(#db1010, rgb(30, 51, 245));
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Press Start 2P", cursive;
+  margin-top: 1rem;
 }
 
 .container {
   background-image: url(../recursos/fondo1.jpg);
-  width: 900px !important;
-  height: 600px;
-  margin: auto !important;
+  background: -webkit-linear-gradient(#ffffff, rgb(51, 30, 235));
+  width: 600px !important;
+  height: 650px;
   box-shadow: 0px 20px 20px #a9adf1;
-  border-radius: 15px 15px 0px 0px;
-  font-family: "Chakra Petch", sans-serif;
-  position: absolute;
+  border-radius: 15px 15px 15px 15px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  position: absolute;
+  font-family: "Chakra Petch", sans-serif;
 }
 
 .description {
-  margin: 2rem;
+  margin: 1rem;
+  margin-bottom: 3rem;
   justify-content: center;
-  color: rgb(94, 3, 3);
+  color: rgb(0, 0, 0);
+  padding: 0.5rem;
 }
 
 .stats {
   display: column;
   text-align: justify;
-  margin-left: 4.5rem;
-  margin-top: 4rem;
-  margin-bottom: 2rem;
-  color: #1025e7;
+  margin-left: 25px;
+  font-size: 14px;
 }
 
 .id {
-  margin-top: 6.5rem;
-  display: flex;
-  justify-content: center;
-  color: #888484;
   font-size: 10px;
 }
 
 .btn {
-  min-width: 130px;
+  width: 100px;
   height: 40px;
-  color: #f8db37;
-  padding: 5px 10px;
+  color: #ffffff;
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s ease;
-  position: relative;
-  display: inline-block;
-  outline: none;
   border-radius: 5px;
-  border: none;
-  background: #3c7ec9;
+  border: 4px solid #db1010;
+  background: transparent;
+  margin-top: 3em;
 }
+
 .btn:hover {
-  background: #e71010;
+  background: #db1010;
+}
+
+.container .imagen {
+  width: 150px;
+  height: 240px;
+}
+
+.grid {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 1px;
+  grid-row-gap: 0px;
+}
+
+.gridAbajo {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 43px;
+  grid-row-gap: 0px;
+  margin-top: 2rem;
 }
