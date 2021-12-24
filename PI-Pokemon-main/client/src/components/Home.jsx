@@ -89,7 +89,7 @@ export default function Home() {
           <img src={toggepi} alt="loading gif" className={estilohome.togge} />
         </div>
       )}
-      <div> <p> With ♥ by Liliana Martínez </p></div>
+      <div className="estilohome.love"> <p> With ♥ by Liliana Martínez </p></div>
     </div>
   );
 }
