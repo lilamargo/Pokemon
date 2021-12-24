@@ -58,7 +58,7 @@ export default function Home() {
       <h1 className={estilohome.h}> Pokédex </h1>
       <div className={estilohome.hello}>
         <p>
-          Hello there trainers! Welcome to the Pokédex where you will find
+          Hello there trainers! Welcome to the Liliana´s Pokédex where you will find
           background information about the habitat or activities of a Pokémon in
           the wild or other information about the history or anatomy of the
           Pokémon.
@@ -89,6 +89,7 @@ export default function Home() {
           <img src={toggepi} alt="loading gif" className={estilohome.togge} />
         </div>
       )}
+      <div> <p> With ♥ by Liliana Martínez </p></div>
     </div>
   );
 }
